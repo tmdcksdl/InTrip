@@ -1,0 +1,162 @@
+.title-container{
+    text-align: center;
+  }
+  
+.main-title {
+    text-align: center;
+    font-size: 2.7rem;
+    display: inline-block;
+    margin: 0 auto;
+    transition: 0.3s all ease-in;
+}
+.main-title:hover{
+    transform: translateY(-5px);
+    transition: 0.3s all ease-in;
+}
+
+.sub-title {
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.full-container {
+    margin: 20px auto;
+    width : 90%;
+}
+
+.time-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 5px;
+    font-size: 0.8rem;
+
+}
+
+.time {
+    width: 80px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.separator {
+    border-top: 1px solid #000; /* 선의 두께와 색상을 지정 */
+    margin-top: 10px; /* 선 위쪽 여백을 조절 */
+    margin-bottom: 10px; /* 선 아래쪽 여백을 조절 */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.menu-button {
+    display: flex;
+    outline: none;
+    color: #DAA06D;
+    background-color: #EADDCA;
+    padding: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
+    width: 169px;
+    height: 40px;
+    font-size: 0.9rem;
+    border: 2px dashed #DAA06D;
+    border-radius: 15px;
+    box-shadow: 0 0 0 4px #EADDCA, 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    transition: .1s ease-in-out, .4s color;
+}
+
+.menu-button:active {
+    transform: translateX(0.1em) translateY(0.1em);
+    box-shadow: 0 0 0 4px #EADDCA, 1.5px 1.5px 2.5px 1.5px rgba(0, 0, 0, 0.5);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.upload-title {
+    text-align: center;
+    margin-top: 15px;
+    color: black;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    color: #DAA06D;
+    padding: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
+    width : 700px;
+    height : 420px;
+    border: 2px dashed #DAA06D;
+    border-radius: 15px;
+    background-color: #EADDCA;
+    margin: 0 auto;
+    margin-top: 170px;
+    box-shadow: 0 0 0 4px #EADDCA, 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+    justify-content: center;
+}
+
+input[type=file]::file-selector-button {
+    width: 150px;
+    height: 30px;
+    background: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+input[type=file]::file-selector-button:hover{
+    background: rgb(77,77,77);
+    color: #fff;
+}
+
+.form-control {
+    font-size: 14px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    width: 100%;
+    height: 40px;
+}
+
+.form-control-2 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+.submit-button {
+    color: black;
+    font-size : 14px;
+    background-color: blanchedalmond;
+    margin-bottom: 30px;
+    padding : 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}

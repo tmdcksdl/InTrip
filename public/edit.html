@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InTrip</title>
+  <link href="main.css" rel="stylesheet">
+</head>
+<body>
+  
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+
+    <script>
+        
+        const firebaseConfig = {
+        apiKey: "AIzaSyCm691LnLvXk_1WyWH6TZyYIqhjz2VVIFM",
+        authDomain: "intrip-22ef0.firebaseapp.com",
+        projectId: "intrip-22ef0",
+        storageBucket: "intrip-22ef0.appspot.com",
+        messagingSenderId: "109476975825",
+        appId: "1:109476975825:web:8efe33e9e776c6de67e1f0",
+        measurementId: "G-NQ40TRRJKE"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+
+    <div class="container mt-3">
+        <input type="text" class="form-control mt-2" id="title" placeholder="title">
+        <textarea class="form-control mt-2" id="content">content</textarea>
+        <input type="text" class="form-control mt-2" id="price" placeholder="price">
+        <button class="btn btn-danger mt-3" id="send">올리기</button>
+    </div>
+
+    <script>
+
+        const db = firebase.firestore();      // database 문법 소환술
+        const storage = firebase.storage();   // sorage 다루는 문법 소환술
+
+        var 쿼리스트링 = new URLSearchParams(window.location.search);
+        쿼리스트링.get('id');
+
+        db.collection('product').doc(쿼리스트링.get('id')).get().then((result) => {
+            console.log(result.data())
+            $('#title').val(result.data().제목)
+            $('#content').val(result.data().내용)
+            $('#price').val(result.data().가격) // 같은 방식으로 이미지도 가능
+
+        })
+
+        $('#send').click(function(){ // 수정 버튼이 로그인된 유저의 uid == 게시물에 저장된 uid일 때만 보여주도록 하기(프론트엔드)
+            var 바꿀거 = {
+            제목 : $('#title').val(),
+            내용 : $('#content').val(),
+            가격 : $('#price').val()
+            }
+
+            db.collection('product').doc(쿼리스트링.get('id')).update(바꿀거)
+        })
+        
+
+
+
+    </script>
+
+  
+
+  <script type="module" src="./index.js"></script>
+</body>
+</html>

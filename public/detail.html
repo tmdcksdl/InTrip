@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InTrip</title>
+  <link href="detail.css" rel="stylesheet">
+</head>
+<body>
+  
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+
+    <script>
+        
+        const firebaseConfig = {
+        apiKey: "AIzaSyCm691LnLvXk_1WyWH6TZyYIqhjz2VVIFM",
+        authDomain: "intrip-22ef0.firebaseapp.com",
+        projectId: "intrip-22ef0",
+        storageBucket: "intrip-22ef0.appspot.com",
+        messagingSenderId: "109476975825",
+        appId: "1:109476975825:web:8efe33e9e776c6de67e1f0",
+        measurementId: "G-NQ40TRRJKE"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+
+    <div class="title-container">
+
+        <h1><a href="/index.html" class="main-title">InTrip</a></h1>
+        <h4 class="sub-title">행복한 추억을 기록하는 여행 다이어리</h4>
+
+    </div>
+
+    <div class="full-container">
+
+        <div class="time-container">
+          <div class="time hour">00</div>
+          <div class="divider">:</div>
+          <div class="time min">00</div>
+          <div class="divider">:</div>
+          <div class="time sec">00</div>
+        </div>
+      
+        <div class="separator"></div> <!-- 선추가 -->
+      
+        <div class="button-container">
+            <a href="/login.html" class="menu-button">로그인</a>
+            <a href="/upload.html" class="menu-button">여행 기록</a>
+            <a href="#" class="menu-button">위시리스트</a>
+            <a href="#" class="menu-button">로그아웃</a>
+        </div>
+    
+      </div>
+    
+    <div class="container">
+        <div class="detail-pic" style="background-image: url('https://picsum.photos/400');"></div>
+        <div class="detail-form">
+            <h1 class="title">제목</h1>
+            <div class="dp">
+                <p class="detail-date">날짜</p>
+                <p class="detail-people">올린 사람</p>
+            </div>
+            <p class="detail-content">내용</p>
+        </div>
+    </div>
+
+    
+    
+
+    <!-- <div class="container">
+        상세페이지임 
+        <button id="edit">수정</button>
+        <div class="detail-pic my-4" style="background-image: url('https://picsum.photos/400');"></div>
+        <div>
+            <h5>올린사람 : 모름</h5>
+            <hr>
+            <h5 class="title"></h5>  
+            <p class="date">올린날짜</p>
+            <p class="price"></p>
+        </div>
+    </div> -->
+
+    <script>
+
+        const db = firebase.firestore();      // database 문법 소환술
+        const storage = firebase.storage();   // sorage 다루는 문법 소환술
+
+        var 쿼리스트링 = new URLSearchParams(window.location.search);
+
+        db.collection('product').doc(쿼리스트링.get('id')).get().then((result) => {
+            console.log(result.data())
+            $('.title').html(result.data().제목)
+            $('.price').html(result.data().가격)
+            $('.detail-pic').css('background-image', `url(${result.data().이미지})`)
+            
+        })
+
+        $('#edit').click(function(){
+            window.location.href = '/edit.html?id=' + 쿼리스트링.get('id')
+        })
+
+
+    </script>
+
+    <script>
+        const hour = document.querySelector('.hour');
+        const min = document.querySelector('.min');
+        const sec = document.querySelector('.sec');
+
+        function clock() {
+        const now = new Date();
+
+        hour.innerText = now.getHours();
+        min.innerText = now.getMinutes();
+        sec.innerText = now.getSeconds();
+        }
+
+        setInterval(clock, 1000); //1초
+
+    </script>
+  
+</body>
+</html>

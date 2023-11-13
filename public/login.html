@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InTrip</title>
+  <link href="login.css" rel="stylesheet">
+</head>
+<body>
+  
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+
+    <script>
+        
+        const firebaseConfig = {
+        apiKey: "AIzaSyCm691LnLvXk_1WyWH6TZyYIqhjz2VVIFM",
+        authDomain: "intrip-22ef0.firebaseapp.com",
+        projectId: "intrip-22ef0",
+        storageBucket: "intrip-22ef0.appspot.com",
+        messagingSenderId: "109476975825",
+        appId: "1:109476975825:web:8efe33e9e776c6de67e1f0",
+        measurementId: "G-NQ40TRRJKE"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+
+    <div class="title-container">
+
+        <h1><a href="/index.html" class="main-title">InTrip</a></h1>
+        <h4 class="sub-title">행복한 추억을 기록하는 여행 다이어리</h4>
+
+    </div>
+
+    <div class="full-container">
+
+        <div class="time-container">
+          <div class="time hour">00</div>
+          <div class="divider">:</div>
+          <div class="time min">00</div>
+          <div class="divider">:</div>
+          <div class="time sec">00</div>
+        </div>
+      
+        <div class="separator"></div> <!-- 선추가 -->
+      
+        <div class="button-container">
+            <a href="/login.html" class="menu-button">로그인</a>
+            <a href="/upload.html" class="menu-button">여행 기록</a>
+            <a href="#" class="menu-button">위시리스트</a>
+            <a href="#" class="menu-button">로그아웃</a>
+        </div>
+    
+    </div>
+
+    <div>
+        <form class="login-content">
+            <h1 class="login-title">로그인</h1>
+            <input type="email" class="form-control" placeholder="email@example.com" id="email">
+            <input type="password" class="form-control" placeholder="pw" id="pw">
+            <button type="submit" class="submit-button" id="login">로그인</button>
+            <!-- <button type="submit" class="submit-button" id="logout">로그아웃</button> -->
+            <div class="links">아직 InTrip 회원이 아니신가요?<a href="/join.html" class="join-button">회원가입</a></div>
+        </form>
+
+    </div>
+
+    <script>
+
+        const db = firebase.firestore();      // database 문법 소환술
+        const storage = firebase.storage();   // sorage 다루는 문법 소환술
+
+        // // 유저정보 확인 -> 훨씬 빠른 방법
+        // var 뺀거 = localStorage.getItem('user')
+        // $('userName').html(JSON.parse(뺀거).displayName)
+        // // $('userName').html(user.displayName) -> 로그인 한 사람의 이름을 보여주는 코드 -> 모든 페이지에 추가해줘야 함 -> 자바스크립트 파일로 만들어서 모든 페이지에 추가해주기
+        // // 유저 정보를 localStorage에 저장해두면 빠를듯..! -> localStorage : 브라우저에 몰래 정보저장하는 공간, 개발자만 아는 공간 -> 브라우저 꺼도 남아있음
+
+        // firebase.auth().onAuthStateChanged((user) => { //오래 걸림...
+        //     if (user) { // 없으면 업로드 버튼을 숨기거나..
+        //         console.log(user.uid)
+        //         console.log(user.displayName)
+        //         localStorage.setItem('user', JSON.stringify(user))
+
+        //     }
+            
+        // })
+
+
+        $('#login').click(function(){
+
+            var 이메일 = $('#email').val();
+            var 패스워드 = $('#pw').val();
+
+            console.log('Hello');
+
+            firebase.auth().signInWithEmailAndPassword(이메일, 패스워드).then((result) => {
+                console.log(result.user);
+                // window.location.href = '/index.html'
+            })
+
+        })
+
+        
+        // $('#logout').click(function(){
+        //     firebase.auth().signOut()
+        //     // localStorage.removeItem('user')
+        // })
+
+
+    </script>
+
+    <script>
+        
+        const hour = document.querySelector('.hour');
+        const min = document.querySelector('.min');
+        const sec = document.querySelector('.sec');
+
+        function clock() {
+        const now = new Date();
+
+        hour.innerText = now.getHours();
+        min.innerText = now.getMinutes();
+        sec.innerText = now.getSeconds();
+        }
+
+        setInterval(clock, 1000); //1초
+
+  </script>
+  
+
+</body>
+</html>

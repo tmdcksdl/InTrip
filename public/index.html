@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InTrip</title>
+  <link href="main.css" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="title-container">
+
+    <h1><a href="/index.html" class="main-title">InTrip</a></h1>
+    <h4 class="sub-title">행복한 추억을 기록하는 여행 다이어리</h4>
+
+  </div>
+  
+  
+  <div class="full-container">
+
+    <div class="time-container">
+      <div class="time hour">00</div>
+      <div class="divider">:</div>
+      <div class="time min">00</div>
+      <div class="divider">:</div>
+      <div class="time sec">00</div>
+    </div>
+  
+    <div class="separator"></div> <!-- 선추가 -->
+  
+    <div class="button-container">
+        <a href="/login.html" class="menu-button">로그인</a>
+        <a href="/upload.html" class="menu-button">여행 기록</a>
+        <a href="#" class="menu-button">위시리스트</a>
+        <a href="#" class="menu-button">로그아웃</a>
+    </div>
+  
+    <div class="description-box">
+        <h2 class="description-title">여행 다이어리 설명</h2>
+        <p class="description-content">언제든 즐거웠던 여행을 기록하고 추억할 수 있는 다이어리!!!</p>
+    </div>
+
+  </div>
+  
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <script>
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyCm691LnLvXk_1WyWH6TZyYIqhjz2VVIFM",
+      authDomain: "intrip-22ef0.firebaseapp.com",
+      projectId: "intrip-22ef0",
+      storageBucket: "intrip-22ef0.appspot.com",
+      messagingSenderId: "109476975825",
+      appId: "1:109476975825:web:8efe33e9e776c6de67e1f0",
+      measurementId: "G-NQ40TRRJKE"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+  </script>
+
+<div class="container">
+  <!-- <div class="product">
+    <div class="thumbnail" style="background-image: url('https://via.placeholder.com/350')"></div>
+    <div class="flex-grow-1 p-4">
+      <h5 class="title">아기다스 신발</h5>
+      <p class="date">2030년 1월 8일</p>
+      <p class="price">20000원</p>
+      <p class="float-end">❤️0</p>
+    </div>
+  </div> -->
+</div>
+
+<script>
+
+  const db = firebase.firestore(); // database 문법 소환술
+  db.collection('product').get().then((결과) => {
+    결과.forEach((doc) => {
+      console.log(doc.data());
+      var 템플릿 = `<div class="product">
+                      <div class="thumbnail" style="background-image: url('${doc.data().이미지}')"></div>
+                      <div class="flex-grow">
+                        <h5 class="title"><a href = "/detail.html?id=${doc.id}">${doc.data().제목}</a></h5>
+                        <p class="date">${doc.data().날짜}</p>
+                        <p class="price">${doc.data().가격}원</p>
+                        <p class="float-end">❤️0</p>
+                      </div>
+                    </div>`;
+      $('.container').append(템플릿)
+    })
+  })
+
+  </script>
+
+  <script>
+    const hour = document.querySelector('.hour');
+    const min = document.querySelector('.min');
+    const sec = document.querySelector('.sec');
+
+    function clock() {
+      const now = new Date();
+
+      hour.innerText = now.getHours();
+      min.innerText = now.getMinutes();
+      sec.innerText = now.getSeconds();
+    }
+
+    setInterval(clock, 1000); //1초
+
+  </script>
+
+  
+
+</body>
+</html>
