@@ -22,8 +22,17 @@
 .full-container{
     margin: 20px auto;
     width : 90%;
-  }
-  
+}
+
+.name-time{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 5px;
+    margin-left: 15px;
+    font-size: 0.8rem;
+}
+
 .time-container {
     display: flex;
     align-items: center;
