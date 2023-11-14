@@ -67,10 +67,10 @@
         <div class="detail-form">
             <h1 class="title">제목</h1>
             <div class="dp">
-                <p class="detail-date">날짜</p>
-                <p class="detail-people">올린 사람</p>
+                <p class="date">날짜</p>
+                <p class="people">올린 사람</p>
             </div>
-            <p class="detail-content">내용</p>
+            <p class="content">내용</p>
         </div>
     </div>
 
@@ -97,7 +97,9 @@
         db.collection('product').doc(쿼리스트링.get('id')).get().then((result) => {
             console.log(result.data())
             $('.title').html(result.data().제목)
-            $('.price').html(result.data().가격)
+            $('.people').html(result.data().이름)
+            $('.content').html(result.data().내용)
+            $('.date').html(result.data().날짜)
             $('.detail-pic').css('background-image', `url(${result.data().이미지})`)
             
         })
