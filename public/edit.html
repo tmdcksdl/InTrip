@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InTrip</title>
-  <link href="main.css" rel="stylesheet">
+  <link href="upload.css" rel="stylesheet">
 </head>
 <body>
   
@@ -34,11 +34,42 @@
 
     </script>
 
-    <div class="container mt-3">
-        <input type="text" class="form-control mt-2" id="title" placeholder="title">
-        <textarea class="form-control mt-2" id="content">content</textarea>
-        <input type="text" class="form-control mt-2" id="price" placeholder="price">
-        <button class="btn btn-danger mt-3" id="send">올리기</button>
+    <div class="title-container">
+
+        <h1><a href="/index.html" class="main-title">InTrip</a></h1>
+        <h4 class="sub-title">행복한 추억을 기록하는 여행 다이어리</h4>
+
+    </div>
+
+
+    <div class="full-container">
+
+        <div class="time-container">
+          <div class="time hour">00</div>
+          <div class="divider">:</div>
+          <div class="time min">00</div>
+          <div class="divider">:</div>
+          <div class="time sec">00</div>
+        </div>
+      
+        <div class="separator"></div> <!-- 선추가 -->
+      
+        <div class="button-container">
+            <a href="/login.html" class="menu-button">로그인</a>
+            <a href="/upload.html" class="menu-button">여행 기록</a>
+            <a href="/wishlist.html" class="menu-button">위시리스트</a>
+            <a href="#" class="menu-button">로그아웃</a>
+        </div>
+    
+    </div>
+    
+    <!-- price 부분은 다른 내용으로 변경해야 함 -->
+    <div class="upload-form">
+        <h1 class="upload-title">여행 기록</h1>
+        <input type="text" class="form-control" id="title" placeholder="Trip-title">
+        <input type="text" class="form-control" id="date" placeholder="Trip-date"> 
+        <textarea class="form-control-2" id="content" placeholder="Trip-content"></textarea>
+        <button class="submit-button" id="send">올리기</button>
     </div>
 
     <script>
@@ -46,36 +77,30 @@
         const db = firebase.firestore();      // database 문법 소환술
         const storage = firebase.storage();   // sorage 다루는 문법 소환술
 
-        var 쿼리스트링 = new URLSearchParams(window.location.search);
-        쿼리스트링.get('id');
-
-        db.collection('product').doc(쿼리스트링.get('id')).get().then((result) => {
-            console.log(result.data())
-            $('#title').val(result.data().제목)
-            $('#content').val(result.data().내용)
-            $('#price').val(result.data().가격) // 같은 방식으로 이미지도 가능
-
-        })
-
-        $('#send').click(function(){ // 수정 버튼이 로그인된 유저의 uid == 게시물에 저장된 uid일 때만 보여주도록 하기(프론트엔드)
-            var 바꿀거 = {
-            제목 : $('#title').val(),
-            내용 : $('#content').val(),
-            가격 : $('#price').val()
-            }
-
-            db.collection('product').doc(쿼리스트링.get('id')).update(바꿀거)
-        })
         
 
-
-
     </script>
-
+    
     <script src = "login.js"></script>
 
+    <script>
+                
+        const hour = document.querySelector('.hour');
+        const min = document.querySelector('.min');
+        const sec = document.querySelector('.sec');
+
+        function clock() {
+        const now = new Date();
+
+        hour.innerText = now.getHours();
+        min.innerText = now.getMinutes();
+        sec.innerText = now.getSeconds();
+        }
+
+        setInterval(clock, 1000); //1초
+
+    </script>
   
 
-  <script type="module" src="./index.js"></script>
 </body>
 </html>
