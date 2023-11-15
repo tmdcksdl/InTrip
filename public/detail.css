@@ -94,18 +94,19 @@ a {
 
 .container{
     display : flex;
-    margin: 30px auto;
+    margin: 60px auto;
     width : 90%;
 }
 
 .detail-form{
     width: 40%;
-    margin-right: 10px;
+    margin-top: 115px;
+    margin-right: 20px;
 }
 
 .detail-pic {
     width: 60%;
-    height: 70vh;
+    height: 100vh;
     margin-right: 20px;
     
     background-size: cover; /* 배경 이미지를 커버하도록 설정합니다. */
@@ -129,6 +130,7 @@ a {
     font-size: 1.5rem;
     width : 100%;
     justify-content: space-between;
+    margin-top: 15px;
 }
 
 .date{
@@ -141,6 +143,7 @@ a {
 
 .content {
     font-size: 1.3rem;
+    height: 50vh;
     margin-top: 30px;
     margin-bottom: 10px; /* 각 항목 간격 조절 */
     background-color: aliceblue;

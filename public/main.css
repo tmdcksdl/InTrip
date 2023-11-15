@@ -54,7 +54,7 @@
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 5px;
+  margin-top: 15px;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -104,6 +104,10 @@ a {
 }
 .description-content {
   text-align: center;
+}
+.user-info{
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -156,5 +160,9 @@ a {
   background-size: cover;
   background-position: center;
 } 
+
+.flex-grow{
+  margin-left: 15px;
+}
 
 

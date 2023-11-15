@@ -36,8 +36,12 @@
     </div>
   
     <div class="description-box">
-        <h2 class="description-title">여행 다이어리 설명</h2>
+        <h2 class="description-title">여행 다이어리</h2>
         <p class="description-content">언제든 즐거웠던 여행을 기록하고 추억할 수 있는 다이어리!!!</p>
+        <div class="user-info">
+          <div id="userName"> </div>
+          <div class="description-content">&nbsp; 님, InTrip에 오신걸 환영해요! InTrip에서 행복한 추억 남기고 가세요!</div>
+        </div>
     </div>
 
   </div>
@@ -81,6 +85,8 @@
 <script>
 
   const db = firebase.firestore(); // database 문법 소환술
+  const storage = firebase.storage();
+
   db.collection('product').get().then((결과) => {
     결과.forEach((doc) => {
       console.log(doc.data());
@@ -98,6 +104,8 @@
   })
 
   </script>
+
+  <script src = "login.js"></script>
 
   <script>
     const hour = document.querySelector('.hour');
