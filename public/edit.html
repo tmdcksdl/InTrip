@@ -93,6 +93,13 @@
             $('#content').val(result.data().내용)
         })
 
+        db.collection('wishlist').doc(쿼리스트링.get('id')).get().then((result) => {
+            console.log(result.data())
+            $('#title').val(result.data().제목)
+            $('#date').val(result.data().날짜)
+            $('#content').val(result.data().내용)
+        })
+
         $('send').click(function(){ // 수정 기능
             var 바꿀거 = {
             제목 : $('#title').val(),
