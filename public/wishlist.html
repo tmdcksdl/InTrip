@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InTrip</title>
+  <link href="upload.css" rel="stylesheet">
+</head>
+<body>
+  
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+
+    <script>
+        
+        const firebaseConfig = {
+        apiKey: "AIzaSyCm691LnLvXk_1WyWH6TZyYIqhjz2VVIFM",
+        authDomain: "intrip-22ef0.firebaseapp.com",
+        projectId: "intrip-22ef0",
+        storageBucket: "intrip-22ef0.appspot.com",
+        messagingSenderId: "109476975825",
+        appId: "1:109476975825:web:8efe33e9e776c6de67e1f0",
+        measurementId: "G-NQ40TRRJKE"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+
+    <div class="title-container">
+
+        <h1><a href="/index.html" class="main-title">InTrip</a></h1>
+        <h4 class="sub-title">행복한 추억을 기록하는 여행 다이어리</h4>
+
+    </div>
+
+
+    <div class="full-container">
+
+        <div class="time-container">
+          <div class="time hour">00</div>
+          <div class="divider">:</div>
+          <div class="time min">00</div>
+          <div class="divider">:</div>
+          <div class="time sec">00</div>
+        </div>
+      
+        <div class="separator"></div> <!-- 선추가 -->
+      
+        <div class="button-container">
+            <a href="/login.html" class="menu-button">로그인</a>
+            <a href="/upload.html" class="menu-button">여행 기록</a>
+            <a href="#" class="menu-button">위시리스트</a>
+            <a href="#" class="menu-button">로그아웃</a>
+        </div>
+    
+    </div>
+    
+    <!-- price 부분은 다른 내용으로 변경해야 함 -->
+    <div class="upload-form">
+        <h1 class="upload-title">가고 싶은 여행지 기록</h1>
+        <input type="text" class="form-control" id="title" placeholder="Trip-title">
+        <input type="text" class="form-control" id="date" placeholder="Trip-date"> 
+        <textarea class="form-control-2" id="content" placeholder="Trip-content"></textarea>
+        <input type="file" id="image">
+        <button class="submit-button" id="send">올리기</button>
+    </div>
+
+    <script>
+
+        const db = firebase.firestore();      // database 문법 소환술
+        const storage = firebase.storage();   // sorage 다루는 문법 소환술
+
+        $('#send').click(function(){
+
+            var file = document.querySelector('#image').files[0];
+            var storageRef = storage.ref();                            // storage에 파일 저장하기 위한 코드 (저장경로 정하는 부분)
+            var 저장할경로 = storageRef.child('image/' + file.name);
+            var 업로드작업 = 저장할경로.put(file);                // Javascript로 업로드 원하는 파일 찾아서 넣기
+
+            업로드작업.on( 'state_changed', 
+                // 변화시 동작하는 함수 
+                null, 
+                //에러시 동작하는 함수
+                (error) => {
+                console.error('실패사유는', error);
+                }, 
+                // 성공시 동작하는 함수
+                () => {
+                    업로드작업.snapshot.ref.getDownloadURL().then((url) => {
+                        console.log('업로드된 경로는', url);
+
+                        var 저장할거 = { 
+                            제목 : $('#title').val(),
+                            날짜 : $('#date').val(),
+                            내용 : $('#content').val(),
+                            이미지 : url, // 이미지 먼저 업로드하고 성공하면 DB에 이미지 url 저장
+                            uid : JSON.parse(localStorage.getItem('user')).uid,
+                            이름 : JSON.parse(localStorage.getItem('user')).displayName
+                        }
+                        db.collection('wishlist').add(저장할거).then((result)=>{ // add는 자동으로 문서이름 부여 -> 유용한 방법(상품 제목 다 지정할 수 없기 때문) -> 뒤에 효과는 알아서 추가
+                            console.log(result);
+                            // window.location.href = '/index.html'
+                        }).catch((error)=>{
+                            console.log(error)
+                        })
+                    });
+                }
+            );
+        });
+
+    </script>
+    
+    <script src = "login.js"></script>
+
+    <script>
+                
+        const hour = document.querySelector('.hour');
+        const min = document.querySelector('.min');
+        const sec = document.querySelector('.sec');
+
+        function clock() {
+        const now = new Date();
+
+        hour.innerText = now.getHours();
+        min.innerText = now.getMinutes();
+        sec.innerText = now.getSeconds();
+        }
+
+        setInterval(clock, 1000); //1초
+
+    </script>
+  
+
+</body>
+</html>
