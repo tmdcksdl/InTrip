@@ -70,17 +70,34 @@
 
   </script>
 
-<div class="container">
-  <!-- <div class="product">
-    <div class="thumbnail" style="background-image: url('https://via.placeholder.com/350')"></div>
-    <div class="flex-grow-1 p-4">
-      <h5 class="title">아기다스 신발</h5>
-      <p class="date">2030년 1월 8일</p>
-      <p class="name">20000원</p>
-      <p class="float-end">❤️0</p>
-    </div>
-  </div> -->
+<div class="con-container">
+
+  <div class="container">
+    <!-- <div class="product">
+      <div class="thumbnail" style="background-image: url('https://via.placeholder.com/350')"></div>
+      <div class="flex-grow-1 p-4">
+        <h5 class="title">아기다스 신발</h5>
+        <p class="date">2030년 1월 8일</p>
+        <p class="name">20000원</p>
+        <p class="float-end">❤️0</p>
+      </div>
+    </div> -->
+  </div>
+
+  <div class="container2">
+    <!-- <div class="wishlist">
+      <div class="thumbnail" style="background-image: url('${doc.data().이미지}')"></div>
+      <div class="flex-grow">
+        <h5 class="title"><a href="/detail.html?id=${doc.id}">${doc.data().제목}</a></h5>
+        <p class="date">${doc.data().날짜}</p>
+        <p class="name">${doc.data().이름}</p>
+        <p class="float-end">❤️0</p>
+      </div>
+    </div> -->
+  </div>
+  
 </div>
+  
 
 <script>
 
@@ -102,6 +119,23 @@
       $('.container').append(템플릿)
     })
   })
+
+  db.collection('wishlist').get().then((결과) => {
+    결과.forEach((doc) => {
+      console.log(doc.data());
+      var 템플릿 = `<div class="wishlist">
+                      <div class="thumbnail" style="background-image: url('${doc.data().이미지}')"></div>
+                      <div class="flex-grow">
+                        <h5 class="title"><a href="/detail.html?id=${doc.id}">${doc.data().제목}</a></h5>
+                        <p class="date">${doc.data().날짜}</p>
+                        <p class="name">${doc.data().이름}</p>
+                        <p class="float-end">❤️0</p>
+                      </div>
+                    </div>`;
+      $('.container2').append(템플릿)
+    })
+  })
+
 
   </script>
 

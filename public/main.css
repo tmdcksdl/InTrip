@@ -110,11 +110,23 @@ a {
   justify-content: center;
 }
 
+.con-container{
+  display: flex;
+}
 
 .container{
   display: flex;
-  align-items: center;
   flex-direction: column;
+  margin: 20px auto;
+  width: 55%;
+}
+
+.container2{
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  width: 25%;
+
 }
 
 .product {
@@ -123,17 +135,32 @@ a {
   justify-content: center;
   border: 1px solid black;
   border-radius: 15px;
-  width: 1000px;
   margin-top: 25px;
   transition: 0.3s all ease-in;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-
 .product:hover{
   scale : 1.1;
   transition: 0.3s all ease-in;
 
 }
+
+.wishlist {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-top: 25px;
+  transition: 0.3s all ease-in;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.wishlist:hover{
+  scale : 1.1;
+  transition: 0.3s all ease-in;
+
+}
+
 .thumbnail {
   max-width: 200px;
   width: 100%;
