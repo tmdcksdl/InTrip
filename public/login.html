@@ -62,22 +62,42 @@
         <div class="separator"></div> <!-- 선추가 -->
       
         <div class="button-container">
-            <button><a href="/login.html" class="mbtn"><span>로그인</span></a></button>
-            <button><a href="/upload.html" class="mbtn"><span>여행 기록</span></a></button>
-            <button><a href="/wishlist.html" class="mbtn"><span>위시리스트</span></a></button>
-            <button class="mbtn" id="logout"><span>로그아웃</span></button>
+            <a href="/login.html" class="menu-button">로그인</a>
+            <a href="/upload.html" class="menu-button">여행 기록</a>
+            <a href="/wishlist.html" class="menu-button">위시리스트</a>
+            <a href="#" class="menu-button">로그아웃</a>
         </div>
     
     </div>
 
     <div class="login-content">
 
-            <h1 class="login-title">로그인</h1>
-            <input type="email" class="form-control" placeholder="email@example.com" id="email">
-            <input type="password" class="form-control" placeholder="pw" id="pw">
-            <button type="submit" class="submit-button" id="login">로그인</button>
+            <div class="login-title">로그인</div>
+
+            <div class="form">
+
+                <div class="form-control">
+                    <input required="" type="email" id="email">
+                    <label>Email</label>
+                </div>
+                <div class="form-control">
+                    <input required="" type="password" id="pw">
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="submit-button" id="login">로그인</button>
+
+            </div>
+                <!-- <div class="form-control">
+                    <input type="email" id="email">
+                    <label>Email</label>
+                </div>
+                <div class="form-control">
+                    <input type="password" id="pw">
+                    <label>Password</label>
+                </div>
+            <button type="submit" class="submit-button" id="login">로그인</button> -->
             <!-- <button type="submit" class="submit-button" id="logout">로그아웃</button> -->
-            <div class="links">아직 InTrip 회원이 아니신가요?<a href="/join.html" class="join-button">회원가입</a></div>
+            <p>아직 InTrip 회원이 아니신가요?<a href="/join.html" class="join-button">회원가입</a></p>
 
     </div>
 
