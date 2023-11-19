@@ -193,6 +193,9 @@ a {
 .product .date {
   font-size: 16px;
 }
+.product .content{
+  font-size: 13px;
+}
 
 .detail-pic {
   width: 100%;
