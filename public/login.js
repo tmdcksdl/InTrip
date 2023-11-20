@@ -8,8 +8,8 @@ firebase.auth().onAuthStateChanged((user) => { //오래 걸림...-> 전체 페�
     if (user) { // 없으면 업로드 버튼을 숨기거나..
         console.log(user.uid)
         console.log(user.displayName)
-        localStorage.setItem('user', JSON.stringify(user)) // 문자 자료만 저장 가능
-        
+        // localStorage.setItem('user', JSON.stringify(user)) // 문자 자료만 저장 가능
+        $('#userName').html(user.displayName)
     }
     
 })

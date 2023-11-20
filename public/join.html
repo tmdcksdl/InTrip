@@ -64,13 +64,28 @@
 
     <div class="join-form">
 
-            <h1 class="join-title">회원가입</h1>
-            <input type="text" class="form-control" placeholder="name" id="name-new">
-            <input type="email" class="form-control" placeholder="email@example.com" id="email-new">
-            <input type="password" class="form-control" placeholder="pw(6자리 이상)" id="pw-new">
+        <div class="join-title">회원가입</div>
+
+        <div class="form">
+
+            <div class="form-control">
+                <input required="" type="name" id="name-new">
+                <label>Name</label>
+            </div>
+            <div class="form-control">
+                <input required="" type="email" id="email-new">
+                <label>Email</label>
+            </div>
+            <div class="form-control">
+                <input required="" type="password" id="pw-new">
+                <label>Password</label>
+            </div>
             <button type="submit" class="submit-button" id="register">가입하기</button>
 
+        </div>
+
     </div>
+    
 
     <script>
 

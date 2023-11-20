@@ -39,7 +39,7 @@
         <h2 class="description-title">여행 다이어리</h2>
         <p class="description-content">언제든 즐거웠던 여행을 기록하고 추억할 수 있는 다이어리!!!</p>
         <div class="user-info">
-          <div id="userName"> </div>
+          <div id="userName"></div>
           <div class="description-content">&nbsp; 님, InTrip에 오신걸 환영해요! InTrip에서 행복한 추억 남기고 가세요!</div>
         </div>
     </div>
@@ -129,7 +129,17 @@
   })
   </script>
 
-  <script src="login.js"></script>
+  <script>
+    firebase.auth().onAuthStateChanged((user) => { //오래 걸림...-> 전체 페이지에 저장해야 새로고침 해도 유저 정보 그대로 남아있음 -> 자바스크립트 파일로 만들어서 모든 페이지에 추가해주기
+      if (user) { // 없으면 업로드 버튼을 숨기거나..
+          console.log(user.uid)
+          console.log(user.displayName)
+          // localStorage.setItem('user', JSON.stringify(user)) // 문자 자료만 저장 가능
+          $('#userName').html(user.displayName)
+      }
+      
+    })
+  </script>
 
   <script src = "clock.js"></script>
 

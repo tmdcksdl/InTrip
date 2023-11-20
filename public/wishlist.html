@@ -44,12 +44,19 @@
 
     <div class="full-container">
 
-        <div class="time-container">
-          <div class="time hour">00</div>
-          <div class="divider">:</div>
-          <div class="time min">00</div>
-          <div class="divider">:</div>
-          <div class="time sec">00</div>
+        <div class="name-time">
+
+            <div id="userName"></div>
+
+            <div class="time-container">
+                <div class="time hour">00</div>
+                <div class="divider">:</div>
+                <div class="time min">00</div>
+                <div class="divider">:</div>
+                <div class="time sec">00</div>
+
+              </div>
+
         </div>
       
         <div class="separator"></div> <!-- 선추가 -->
@@ -65,12 +72,31 @@
     
     <!-- price 부분은 다른 내용으로 변경해야 함 -->
     <div class="upload-form">
-        <h1 class="upload-title">가고 싶은 여행지</h1>
-        <input type="text" class="form-control" id="title" placeholder="Trip-title">
-        <input type="text" class="form-control" id="date" placeholder="Trip-date"> 
-        <textarea class="form-control-2" id="content" placeholder="Trip-content"></textarea>
-        <input type="file" id="image">
+
+        <div class="upload-title">가고 싶은 여행지</div>
+        
+        <div class="form">
+
+            <div class="form-control">
+
+                <input required="" type="text" id="title">
+                <label>여행 제목</label>
+
+            </div>
+            <div class="form-control">
+
+                <input required="" type="text" id="date"> 
+                <label>여행 날짜</label>
+
+            </div>
+            
+            <textarea id="content" class="form-control-2" placeholder="여행 내용"></textarea> 
+                
+            <input type="file" id="image">
+
+        </div>
         <button class="submit-button" id="send">올리기</button>
+
     </div>
 
     <script>
@@ -118,7 +144,18 @@
 
     </script>
     
-    <script src = "login.js"></script>
+    <script>
+
+        firebase.auth().onAuthStateChanged((user) => { //오래 걸림...-> 전체 페이지에 저장해야 새로고침 해도 유저 정보 그대로 남아있음 -> 자바스크립트 파일로 만들어서 모든 페이지에 추가해주기
+            if (user) { // 없으면 업로드 버튼을 숨기거나..
+                console.log(user.uid)
+                console.log(user.displayName)
+                // localStorage.setItem('user', JSON.stringify(user)) // 문자 자료만 저장 가능
+                $('#userName').html(user.displayName)
+            }
+        
+        })
+    </script>
 
     <script src = "clock.js"></script>
   
