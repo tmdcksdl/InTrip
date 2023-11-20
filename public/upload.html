@@ -104,6 +104,21 @@
         const db = firebase.firestore();      // database 문법 소환술
         const storage = firebase.storage();   // sorage 다루는 문법 소환술
 
+        var uuid;
+        var displayName;
+
+        firebase.auth().onAuthStateChanged((user) => { //오래 걸림...-> 전체 페이지에 저장해야 새로고침 해도 유저 정보 그대로 남아있음 -> 자바스크립트 파일로 만들어서 모든 페이지에 추가해주기
+            if (user) { // 없으면 업로드 버튼을 숨기거나..
+                uuid = user.uid;
+                displayName = user.displayName;
+                console.log(user.uid)
+                console.log(user.displayName)
+                // localStorage.setItem('user', JSON.stringify(user)) // 문자 자료만 저장 가능
+                $('#userName').html(user.displayName)
+            }
+            
+        })
+
         $('#send').click(function(){
 
             var file = document.querySelector('#image').files[0];
@@ -128,12 +143,12 @@
                             날짜 : $('#date').val(),
                             내용 : $('#content').val(),
                             이미지 : url, // 이미지 먼저 업로드하고 성공하면 DB에 이미지 url 저장
-                            uid : JSON.parse(localStorage.getItem('user')).uid, // localStorage에 넣어뒀던 유저의 uid
-                            이름 : JSON.parse(localStorage.getItem('user')).displayName
+                            uid : uuid, // localStorage에 넣어뒀던 유저의 uid
+                            이름 : displayName
                         }
                         db.collection('product').add(저장할거).then((result)=>{ // add는 자동으로 문서이름 부여 -> 유용한 방법(상품 제목 다 지정할 수 없기 때문) -> 뒤에 효과는 알아서 추가
                             console.log(result);
-                            // window.location.href = "/index.html"
+                            window.location.href = "/index.html"
                         }).catch((error)=>{
                             console.log(error)
                         })
@@ -143,8 +158,6 @@
         });
 
     </script>
-    
-    <script src = "login.js"></script>
 
     <script src = "clock.js"></script>
   

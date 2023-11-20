@@ -160,7 +160,7 @@ a {
   border: 1px solid black;
   border-radius: 15px;
   margin-top: 25px;
-  background-color: #F3EEEA;
+  background-color: #fff;
   transition: 0.3s all ease-in;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
@@ -197,12 +197,15 @@ a {
 .product .title {
   font-size: 17px;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 .product .date {
   font-size: 16px;
 }
 .product .content{
   font-size: 13px;
+  width: 100%;
+  height: 4vh;
   overflow: hidden;
 }
 
@@ -220,12 +223,14 @@ a {
 .wishlist .title {
   font-size: 17px;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 .wishlist .date {
   font-size: 16px;
 }
 .wishlist .content{
-  
   font-size: 13px;
+  width: 100%;
+  height: 2vh;
   overflow: hidden;
 }

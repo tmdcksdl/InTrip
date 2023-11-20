@@ -113,6 +113,7 @@
             
         // })
         
+        
 
         $('#login').click(() => {
 
@@ -128,15 +129,16 @@
 
         })
         
-        var 뺀거 = localStorage.getItem('user')
-        $('#userName').html(JSON.parse(뺀거).displayName)
+        // 유저 정보 확인
+        // var 뺀거 = localStorage.getItem('user')
+        // $('#userName').html(JSON.parse(뺀거).displayName)
         
         firebase.auth().onAuthStateChanged((user) => { //오래 걸림...-> 전체 페이지에 저장해야 새로고침 해도 유저 정보 그대로 남아있음 -> 자바스크립트 파일로 만들어서 모든 페이지에 추가해주기
             if (user) { // 없으면 업로드 버튼을 숨기거나..
                 console.log(user.uid)
                 console.log(user.displayName)
-                localStorage.setItem('user', JSON.stringify(user)) // 문자 자료만 저장 가능
-                // $('#userName').html(user.displayName)
+                // localStorage.setItem('user', JSON.stringify(user)) // 문자 자료만 저장 가능
+                $('#userName').html(user.displayName)
             }
             
         })
@@ -149,8 +151,6 @@
 
 
     </script>
-
-    <!-- <script src="login.js"></script> -->
 
 
     <script src="clock.js"></script>
