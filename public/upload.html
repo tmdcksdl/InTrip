@@ -65,12 +65,31 @@
     
     <!-- price 부분은 다른 내용으로 변경해야 함 -->
     <div class="upload-form">
-        <h1 class="upload-title">여행 기록</h1>
-        <input type="text" class="form-control" id="title" placeholder="Trip-title">
-        <input type="text" class="form-control" id="date" placeholder="Trip-date"> 
-        <textarea class="form-control-2" id="content" placeholder="Trip-content"></textarea>
-        <input type="file" id="image">
+
+        <div class="upload-title">여행 기록</div>
+        
+        <div class="form">
+
+            <div class="form-control">
+
+                <input required="" type="text" id="title">
+                <label>여행 제목</label>
+
+            </div>
+            <div class="form-control">
+
+                <input required="" type="text" id="date"> 
+                <label>여행 날짜</label>
+
+            </div>
+            
+            <textarea id="content" class="form-control-2" placeholder="여행 내용"></textarea> 
+                
+            <input type="file" id="image">
+
+        </div>
         <button class="submit-button" id="send">올리기</button>
+
     </div>
 
     <script>
