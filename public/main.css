@@ -1,10 +1,15 @@
+body{
+  background-color: #EBF3E8;
+}
+
 .title-container{
   text-align: center;
 }
 
 .main-title {
   text-align: center;
-  font-size: 2.7rem;
+  font-size: 3.2rem;
+  color: #86A789;
   display: inline-block;
   margin: 0 auto;
   transition: 0.3s all ease-in;
@@ -44,7 +49,7 @@
 }
 
 .separator {
-  border-top: 1px solid #000; /* 선의 두께와 색상을 지정 */
+  border-top: 2px solid #86A789; /* 선의 두께와 색상을 지정 */
   margin-top: 10px; /* 선 위쪽 여백을 조절 */
   margin-bottom: 10px; /* 선 아래쪽 여백을 조절 */
   margin-left: 10px;
@@ -62,17 +67,17 @@
 .menu-button {
   display: flex;
   outline: none;
-  color: #DAA06D;
-  background-color: #EADDCA;
+  color: #fff;
+  background-color: #86A789;
   padding: 1em;
   padding-left: 3em;
   padding-right: 3em;
   width: 169px;
   height: 40px;
   font-size: 0.9rem;
-  border: 2px dashed #DAA06D;
+  border: 2px dashed #4F6F52;
   border-radius: 15px;
-  box-shadow: 0 0 0 4px #EADDCA, 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 4px #86A789, 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
   text-decoration: none;
   font-weight: bold;
   align-items: center;
@@ -82,7 +87,7 @@
 
 .menu-button:active {
   transform: translateX(0.1em) translateY(0.1em);
-  box-shadow: 0 0 0 4px #EADDCA, 1.5px 1.5px 2.5px 1.5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 4px #86A789, 1.5px 1.5px 2.5px 1.5px rgba(0, 0, 0, 0.5);
 }
 
 a {
@@ -92,9 +97,9 @@ a {
 
 .description-box {
   padding: 30px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  background-color: #D2E3C8;
+  border: 1px solid #B2C8BA;
+  border-radius: 10px;
   margin-top: 20px;
   width: 100%;
 }
@@ -108,6 +113,10 @@ a {
 .user-info{
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+}
+.userName{
+  font-size: 1.5em;
 }
 
 .con-container{
@@ -125,6 +134,7 @@ a {
   justify-content: center;
   margin-top: 15px;
   margin-bottom: 10px;
+  color: #86A789;
 }
 
 .container{
@@ -150,6 +160,7 @@ a {
   border: 1px solid black;
   border-radius: 15px;
   margin-top: 25px;
+  background-color: #F3EEEA;
   transition: 0.3s all ease-in;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
@@ -166,6 +177,7 @@ a {
   border: 1px solid black;
   border-radius: 15px;
   margin-top: 25px;
+  background-color: #fff;
   transition: 0.3s all ease-in;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
