@@ -197,14 +197,16 @@ a {
 .product .title {
   font-size: 17px;
   font-weight: 600;
+  width: 100%;
   margin-bottom: 20px;
 }
 .product .date {
   font-size: 16px;
+  width: 100%;
 }
 .product .content{
   font-size: 13px;
-  width: 100%;
+  width: 500px;
   height: 4vh;
   overflow: hidden;
 }
@@ -223,14 +225,16 @@ a {
 .wishlist .title {
   font-size: 17px;
   font-weight: 600;
+  width: 100%;
   margin-bottom: 20px;
 }
 .wishlist .date {
   font-size: 16px;
+  width: 100%;
 }
 .wishlist .content{
   font-size: 13px;
-  width: 100%;
+  width: 120px;
   height: 2vh;
   overflow: hidden;
 }

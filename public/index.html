@@ -36,12 +36,14 @@
     </div>
   
     <div class="description-box">
-        <h2 class="description-title">여행 다이어리</h2>
-        <p class="description-content">언제든 즐거웠던 여행을 기록하고 추억할 수 있는 다이어리!!!</p>
+        <p class="description-content">여행의 추억이 깃든 곳,</p>
+        <p class="description-content">여행의 의미를 써내려가는 곳,</p>
+        <p class="description-content">문득 여행의 이유를 찾아 '나'라는 존재에 대해 알아가는 곳</p>
         <div class="user-info">
           <div class="userName" id="userName"></div>
-          <div class="description-content">&nbsp; 님, InTrip에 오신걸 환영해요! InTrip에서 행복한 추억 남기고 가세요!</div>
+          <div class="description-content">&nbsp; 님, InTrip과 함께 여행을 마칠 준비가 되셨나요?</div>
         </div>
+        <p class="description-content">이곳에서 여행의 마침표를 찍는 것이 아닌 쉼표가 되어 여정을 이어가길 응원합니다.</p>
     </div>
 
   </div>
@@ -118,10 +120,10 @@
       var 템플릿 = `<div class="wishlist">
                       <div class="thumbnail" style="background-image: url('${doc.data().이미지}')"></div>
                       <div class="flex-grow">
-                        <h5 class="title"><a href="/detail.html?id=${doc.id}">${doc.data().제목}</a></h5>
-                        <p class="date"><a href="/detail.html?id=${doc.id}">${doc.data().날짜}</a></p>
-                        <p class="name"><a href="/detail.html?id=${doc.id}">${doc.data().이름}</a></p>
-                        <p class="content"><a href="/detail.html?id=${doc.id}">${doc.data().내용}</a></p>
+                        <h5 class="title"><a href="/detail2.html?id=${doc.id}">${doc.data().제목}</a></h5>
+                        <p class="date"><a href="/detail2.html?id=${doc.id}">${doc.data().날짜}</a></p>
+                        <p class="name"><a href="/detail2.html?id=${doc.id}">${doc.data().이름}</a></p>
+                        <p class="content"><a href="/detail2.html?id=${doc.id}">${doc.data().내용}</a></p>
                       </div>
                     </div>`;
       $('.container2').append(템플릿)

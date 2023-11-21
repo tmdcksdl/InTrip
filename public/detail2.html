@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InTrip</title>
-  <link href="upload.css" rel="stylesheet">
+  <link href="detail.css" rel="stylesheet">
 </head>
 <body>
   
@@ -41,7 +41,6 @@
 
     </div>
 
-
     <div class="full-container">
 
         <div class="name-time">
@@ -62,74 +61,65 @@
         <div class="separator"></div> <!-- 선추가 -->
       
         <div class="button-container">
-
             <a href="/login.html" class="menu-button">로그인</a>
             <a href="/upload.html" class="menu-button">여행 기록</a>
             <a href="/wishlist.html" class="menu-button">위시리스트</a>
             <a href="#" class="menu-button" id="logout">로그아웃</a>
-
         </div>
     
-    </div>
+      </div>
     
-    <!-- price 부분은 다른 내용으로 변경해야 함 -->
-    <div class="upload-form">
-
-        <div class="upload-title">여행 기록 수정</div>
-        
-        <div class="form">
-
-            <div class="form-control">
-
-                <input required="" type="text" id="title">
-                <label>여행 제목</label>
-
-            </div>
-            <div class="form-control">
-
-                <input required="" type="text" id="date"> 
-                <label>여행 날짜</label>
-
-            </div>
+    <div class="container">
+        <div class="detail-pic"></div>
+        <div class="detail-form">
+            <h1 class="title"></h1>
             
-            <textarea id="content" class="form-control-2"></textarea> 
-
+            <div class="dp">
+                <p class="date"></p>
+                <p class="people"></p>
+            </div>
+            <p class="content"></p>
+            <button id="edit" class="edit">수정</button>
         </div>
-        <button type="submit" class="submit-button" id="edit">올리기</button>
-
     </div>
+
+    <!-- <div class="container">
+        상세페이지임 
+        <button id="edit">수정</button>
+        <div class="detail-pic my-4" style="background-image: "></div>
+        <div>
+            <h5>올린사람 : 모름</h5>
+            <hr>
+            <h5 class="title"></h5>  
+            <p class="date">올린날짜</p>
+            <p class="price"></p>
+        </div>
+    </div> -->
 
     <script>
 
         const db = firebase.firestore();      // database 문법 소환술
         const storage = firebase.storage();   // sorage 다루는 문법 소환술
 
-        var 쿼리스트링  = new URLSearchParams(window.location.search);
-        쿼리스트링.get('id');
+        var 쿼리스트링 = new URLSearchParams(window.location.search);
 
-        db.collection('product').doc(쿼리스트링.get('id')).get().then((result) => {
+        db.collection('wishlist').doc(쿼리스트링.get('id')).get().then((result) => {
             console.log(result.data())
-            $('#title').val(result.data().제목)
-            $('#date').val(result.data().날짜)
-            $('#content').val(result.data().내용)
+            $('.title').html(result.data().제목)
+            $('.people').html(result.data().이름)
+            $('.content').html(result.data().내용)
+            $('.date').html(result.data().날짜)
+            $('.detail-pic').css('background-image', `url(${result.data().이미지})`)
+            
         })
 
-        $('#edit').click(function(){ // 수정 기능
-            var 바꿀거 = {
-            제목 : $('#title').val(),
-            날짜 : $('#date').val(),
-            내용 : $('#content').val()
-            }
-
-            db.collection('product').doc(쿼리스트링.get('id')).update(바꿀거).then(() => {
-                window.location.href = '/index.html'
-            })
+        $('#edit').click(function(){
+            window.location.href = '/edit2.html?id=' + 쿼리스트링.get('id')
         })
-        
-        
+
 
     </script>
-    
+
     <script>
 
         firebase.auth().onAuthStateChanged((user) => { //오래 걸림...-> 전체 페이지에 저장해야 새로고침 해도 유저 정보 그대로 남아있음 -> 자바스크립트 파일로 만들어서 모든 페이지에 추가해주기
@@ -146,6 +136,5 @@
     <script src="logout.js"></script>
     <script src = "clock.js"></script>
   
-
 </body>
 </html>

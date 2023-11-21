@@ -107,7 +107,7 @@
         var 쿼리스트링  = new URLSearchParams(window.location.search);
         쿼리스트링.get('id');
 
-        db.collection('product').doc(쿼리스트링.get('id')).get().then((result) => {
+        db.collection('wishlist').doc(쿼리스트링.get('id')).get().then((result) => {
             console.log(result.data())
             $('#title').val(result.data().제목)
             $('#date').val(result.data().날짜)
@@ -121,7 +121,7 @@
             내용 : $('#content').val()
             }
 
-            db.collection('product').doc(쿼리스트링.get('id')).update(바꿀거).then(() => {
+            db.collection('wishlist').doc(쿼리스트링.get('id')).update(바꿀거).then(() => {
                 window.location.href = '/index.html'
             })
         })
