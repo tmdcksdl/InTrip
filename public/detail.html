@@ -113,16 +113,6 @@
             
         })
 
-        db.collection('wishlist').doc(쿼리스트링.get('id')).get().then((result) => {
-            console.log(result.data())
-            $('.title').html(result.data().제목)
-            $('.people').html(result.data().이름)
-            $('.content').html(result.data().내용)
-            $('.date').html(result.data().날짜)
-            $('.detail-pic').css('background-image', `url(${result.data().이미지})`)
-            
-        })
-
         $('#edit').click(function(){
             window.location.href = '/edit.html?id=' + 쿼리스트링.get('id')
         })
